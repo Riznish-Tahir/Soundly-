@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #1f1f1f, #3a3a3a);
+        }
+
+        /* Glassmorphism registration box */
+        .box {
+            width: 380px;
+            padding: 40px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            color: white;
+        }
+
+        .box h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .box input {
+            width: 100%;
+            padding: 12px 15px;
+            margin: 12px 0;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.3);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 15px;
+            outline: none;
+            backdrop-filter: blur(5px);
+        }
+
+        .box input::placeholder {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .box button {
+            width: 100%;
+            padding: 14px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .box button:hover {
+            background: rgba(255, 255, 255, 0.5);
+            color: #292929;
+        }
+
+        .error {
+            color: #ff6b6b;
+            text-align: center;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="box">
+        <h2>Register</h2>
+
+        <p id="error" class="error"></p>
+
+        <input id="name" type="text" placeholder="Full Name">
+        <input id="email" type="email" placeholder="Email Address">
+        <input id="password" type="password" placeholder="Password">
+        <input id="cpassword" type="password" placeholder="Confirm Password">
+
+        <button onclick="register()">Register</button>
+    </div>
+
+<script>
+function register() {
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let pass = document.getElementById("password").value;
+    let cpass = document.getElementById("cpassword").value;
+
+    if(name === "" || email === "" || pass === "" || cpass === "") {
+        document.getElementById("error").innerText = "Please fill all fields";
+        return;
+    }
+
+    if(pass !== cpass) {
+        document.getElementById("error").innerText = "Passwords do not match!";
+        return;
+    }
+
+    alert("Registration Successful!");
+    window.location = "login.html";
+}
+</script>
+
+</body>
+</html>

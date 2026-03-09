@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Soundly-Artist</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.5.1/css/all.css"
+    />
+    <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="home.css" />
+      <link rel="icon" type="image/png" href="images/favicon.png">
+
+    <style>
+      *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    :root{
+        --bg-color:#292929;
+        --secondary-color:#616161;
+        --text-color:#ffffff;
+        --fourth-color:#c7c7c7;
+    }
+
+    body{
+  font-family:'Inter',sans-serif;
+  background:#292929;
+  min-height:100vh;
+}
+
+/* navigation */
+    .nav{
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 50px;
+  font-size: 14px;
+  z-index: 9999;
+  width: max-content; /* desktop */
+}
+
+
+
+    .nav a{
+      display:block;
+      text-decoration:none;
+      color:#ffffff;
+      font-weight:400;
+    }
+    .nav a:hover{
+      color: #c7c7c7;
+    }
+
+    /* big title */
+    .title-wrap{
+      margin-top:130px;
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+    }
+
+    .title{
+      font-size: clamp(16vw, 20vw, 22vw);
+  padding-top: 10vh; 
+      font-weight:1000;
+      letter-spacing:-0.04em;
+      line-height:0.9;
+      color: #616161;
+     
+    }
+
+    .meta{
+      text-align:right;
+      font-size:12px;
+      color:#ffffff;
+    }
+
+    .meta span{
+      display:block;
+    }
+    .logo{
+       position:absolute;
+       left: 1%;
+      top: 1%;
+      height: 100px;
+
+      display: flex;
+    }
+.search-box {
+    position: relative;
+    width: 100%;
+  display: flex;
+  flex: 1;
+  }
+
+  .search-box input{
+  width: 100%;
+  max-width: 300px;
+  padding: 10px 14px 10px 2.5rem;
+  border-radius: 999px;
+  border: none;
+  outline: none;
+  background: #1f1f1f;
+  color: #ffffff;
+  font-size: 15px;
+}
+
+@media(max-width:600px){
+  .search-box input{
+    max-width: 90%;
+  }
+}
+
+  .search-box input::placeholder {
+    color: #b3b3b3;
+  }
+
+  .search-box input:focus {
+    background: #2a2a2a;
+    box-shadow: 0 0 0 2px #fff;
+  }
+
+  .search-box .fa-magnifying-glass {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ffffff;
+    font-size: 1rem;
+    pointer-events: none; 
+  }
+
+
+       .footer {
+        position: relative;
+        bottom: 0;
+        width: 100%;
+        background-color: none;
+        color: white;
+        text-align: center;
+        padding-top:11rem;
+      }
+
+      .footer a {
+        color: white;
+        text-decoration: none;
+        margin: 0 15px;
+      }
+
+      .footer a:hover {
+        text-decoration: underline;
+      }
+      /* Guitar rise animation */
+.guitar-container {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  height: 600px; /* or the height you need */
+}
+
+.guitar-wrap {
+  position: absolute; /* still animates */
+  bottom: 0;          /* start from bottom of container */
+  left: 50%;
+  transform: translateX(-50%);
+ animation:rise 1.4s ease-out forwards;
+}
+@keyframes rise{to{bottom:40px}}
+
+
+/* Guitar head and neck */
+.head{
+  position:absolute;
+  top:-350px;
+  left:50%;
+  transform:translateX(-50%);
+  width:100px;
+  height:70px;
+  background:#c7c7c7; /* neck color */
+  border-radius:12px;
+}
+.neck{
+  position:absolute;
+  top:-280px;
+  left:50%;
+  transform:translateX(-50%);
+  width:60px;
+  height:280px;
+  background:#c7c7c7; /* neck color */
+  border-radius:12px;
+}
+
+/* Guitar body */
+.body{
+  position:relative;
+  width:260px;
+  height:360px;
+}
+.upper,.lower{
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  border-radius:50%;
+}
+.upper{
+  width:200px;
+  height:180px;
+  top:0;
+  background:#616161; /* body color */
+}
+.lower{
+  width:260px;
+  height:260px;
+  bottom:0;
+  background:#616161; /* body color */
+}
+
+/* Sound hole */
+.hole{
+  position:absolute;
+  top:150px;
+  left:50%;
+  transform:translateX(-50%);
+  width:70px;
+  height:70px;
+  background:#111;
+  border-radius:50%;
+  z-index:2;
+}
+
+/* Guitar strings */
+.strings{
+  position:absolute;
+  top:-350px;
+  left:50%;
+  transform:translateX(-50%);
+  width:80px;
+  height:720px;
+  z-index:5;
+}
+.string{
+  position:absolute;
+  top:0;
+  width:2px;
+  height:720px;
+  background:#eee; /* string color */
+  cursor:pointer;
+}
+.string:hover{
+  box-shadow:0 0 10px #ffcc66; /* accent color */
+}
+.string:nth-child(1){left:6px}
+.string:nth-child(2){left:18px}
+.string:nth-child(3){left:30px}
+.string:nth-child(4){left:42px}
+.string:nth-child(5){left:54px}
+.string:nth-child(6){left:66px}
+
+/* Artist cards */
+.cards{
+  position:absolute;
+  right:40px;
+  bottom:40px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+.card{
+  width:280px;
+  height: 200px;
+  background:#1b1b1b;
+  border-radius:16px;
+  padding:14px;
+  display:flex;
+  gap:12px;
+  opacity:0;
+  transform:translateX(40px);
+  animation:cardIn .4s forwards;
+}
+@keyframes cardIn{
+  to{opacity:1;transform:translateX(0)}
+}
+.card img{
+  width:70px;
+  height:70px;
+  border-radius:12px;
+  object-fit:cover;
+}
+.card h4{
+  color:#fff; /* accent color */
+  font-size:16px;
+}
+.card p{
+  font-size:13px;
+  opacity:.85;
+  color: #fff;
+}
+.hint-text {
+  position: absolute;
+  top: 0%;           /* vertical position */
+  right: 70%;          /* horizontal position next to guitar */
+  font-size: 4.5rem;  /* adjust as needed */
+  color: #616161;     /* accent color */
+  font-weight: bold;
+  white-space: nowrap;
+  pointer-events: none; 
+  opacity: 0;
+  animation: fadeIn 1.5s forwards 1s; 
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+    </style>
+  </head>
+  <body>
+    <div class="logo"><img src="logo.png" alt="" /></div>
+    <nav class="nav">
+      <input type="checkbox" id="nav-toggle" />
+      <label for="nav-toggle" class="hamburger">
+        <i class="fa-solid fa-bars"></i>
+      </label>
+
+      <a href="HOME2.HTML">Home</a>
+        <a href="music.html">Music</a>
+      <a href="video.html">Videos</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <div class="search-box">
+        <i class="fa-thin fa-magnifying-glass"></i>
+        <input type="text" placeholder="What do you want to play?" />
+      </div>
+    </nav>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+     <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+<div class="guitar-container">
+  <div class="hint-text">Click a <br>string <br>to <br> reveal <br>the <br>artist!</div>
+
+  <div class="guitar-wrap">
+  <div class="head"></div>
+  <div class="neck"></div>
+
+  <div class="strings">
+    <div class="string" data-i="0"></div>
+    <div class="string" data-i="1"></div>
+    <div class="string" data-i="2"></div>
+    <div class="string" data-i="3"></div>
+    <div class="string" data-i="4"></div>
+    <div class="string" data-i="5"></div>
+  </div>
+
+  <div class="body">
+    <div class="upper"></div>
+    <div class="lower"></div>
+    <div class="hole"></div>
+  </div>
+</div>
+
+<div class="cards" id="cards"></div>
+
+<!-- REAL acoustic guitar sample -->
+<audio id="s1" src="images/m1 (1).wav"></audio>
+<audio id="s2" src="images/m1 (2).wav"></audio>
+<audio id="s3" src="images/m1 (3).wav"></audio>
+<audio id="s4" src="images/m1 (4).wav"></audio>
+<audio id="s5" src="images/m1 (5).wav"></audio>
+<audio id="s6" src="images/m1 (6).wav"></audio>
+
+</div>
+
+
+
+<script>
+const artists=[
+ ["Atif Aslam","Pakistani vocalist","images/g1.png"],
+ ["Billie Eilish","Alternative pop","images/g2.png"],
+ ["Arijit Singh","Playback singer","images/g3.png"],
+ ["The Weeknd","R&B icon","images/g4.png"],
+ ["Nusrat F. A. Khan","Qawwali legend","images/g5.png"],
+ ["Ed Sheeran","Singer-songwriter","images/g6.png"]
+];
+
+const shown = new Set();
+const cards = document.getElementById("cards");
+
+document.querySelectorAll(".string").forEach(s=>{
+  s.addEventListener("click",()=>{
+    const i = Number(s.dataset.i);
+    if(shown.has(i)) return;
+    shown.add(i);
+
+    // Play the corresponding string audio
+    const sound = document.getElementById(`s${i+1}`);
+    sound.currentTime = 0;
+    sound.play();
+
+    // String vibration
+    s.animate([
+      {transform:"translateX(0)"},
+      {transform:"translateX(-5px)"},
+      {transform:"translateX(5px)"},
+      {transform:"translateX(0)"}
+    ], {duration:300});
+
+    // Artist card
+    const c = document.createElement("div");
+    c.className="card";
+    c.innerHTML=`
+      <img src="${artists[i][2]}">
+      <div>
+        <h4>${artists[i][0]}</h4>
+        <p>${artists[i][1]}</p>
+      </div>`;
+    cards.appendChild(c);
+  });
+});
+
+</script>
+
+
+
+
+
+
+ <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    <!-- footer -->
+
+
+   
+    
+      <div class="title-wrap">
+         <div class="footer">
+      <a href="HOME2.HTML">၊၊||၊Home</a><br>
+      <a href="music.html">Music၊၊||၊</a><br>
+      <a href="video.html">၊၊||၊Videos</a><br>
+      <a href="about.html">About၊၊||၊</a><br>
+      <a href="contact.html">၊၊||၊Contact</a>
+    </div>
+        <div class="title">Soundly</div>
+        <div class="meta">
+          <span>(Listen-Songs 24/7)</span>
+        </div>
+      </div>
+    
+
+
+
+    </div>
+     <script src="home.js"></script>
+  </body>
+</html>
