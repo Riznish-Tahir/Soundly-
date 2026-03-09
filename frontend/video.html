@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soundly-Videos</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+      <link rel="icon" type="image/png" href="images/favicon.png">
+
+</head>
+<style>
+  .videoh h1{
+  text-align: center;
+  color: white;
+  font-weight: 900;
+  font-size: 40px;
+  }
+   /* big title */
+    .title-wrap{
+      margin-top:130px;
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+    }
+
+    .title{
+      font-size: clamp(16vw, 20vw, 22vw);
+  padding-top: 10vh; 
+      font-weight:1000;
+      letter-spacing:-0.04em;
+      line-height:0.9;
+      color: #616161;
+     
+    }
+
+    .meta{
+      text-align:right;
+      font-size:12px;
+      color:#ffffff;
+    }
+
+    .meta span{
+      display:block;
+    }
+
+       .footer {
+        position: relative;
+        bottom: 0;
+        width: 100%;
+        background-color: none;
+        color: white;
+        text-align: center;
+        padding-top:11rem;
+      }
+
+      .footer a {
+        color: white;
+        text-decoration: none;
+        margin: 0 15px;
+      }
+
+      .footer a:hover {
+        text-decoration: underline;
+      }
+  #hero-3d {
+    width: 100%;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  /* Sketchfab iframe */
+  #hero-3d iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  /* Optional overlay text */
+  .hero-text {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    pointer-events: none;
+    opacity: 0.85;
+  }
+  .demoWrapper {
+  height: 300vh; /* scroll length */
+}
+
+.stage {
+  position: relative;
+  height: 100vh;
+  perspective: 1200px;
+  transform-style: preserve-3d;
+  overflow: hidden;
+}
+
+.box {
+  position: absolute;
+  width: 260px;
+  height: 150px;
+  left: 50%;
+  top: 50%;
+  margin: -75px -130px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #000;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.45);
+}
+
+.box iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+.videoh{
+  text-align: center;
+  color: white;
+  font-size: 10%;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.old-tv {
+  width: 620px;
+  height: 400px;
+  background: #292929;
+  border: 8px solid #616161;
+  border-radius: 25px;
+  position: relative;
+  margin: 40px auto;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.7);
+}
+
+.screen {
+  width: 90%;
+  height: 300px;
+  margin: 20px auto 0;
+  background: #c7c7c7;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: inset 0 0 15px rgba(0,0,0,0.3);
+}
+
+.tv-btn {
+  position: absolute;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #616161;
+  color: #ffffff;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+  box-shadow: 0 0 10px #000;
+  transition: 0.3s;
+}
+
+.tv-btn:hover {
+  background-color: #c7c7c7;
+  color: #292929;
+}
+
+.tv-leg {
+  width: 20px;
+  height: 40px;
+  background: #616161;
+  position: absolute;
+  bottom: -40px;
+  border-radius: 5px;
+}
+
+.tv-leg.left {
+  left: 20px;
+}
+
+.tv-leg.right {
+  right: 20px;
+}
+.falling-icon {
+    position: absolute;
+    font-size: 10rem; /* default bigger size */
+    color: #c7c7c7;
+    pointer-events: none;
+    opacity: 0.9;
+    animation: fall 3s forwards;
+  }
+.box video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+  @keyframes fall {
+    0% {
+      transform: translateY(-50px) rotate(0deg);
+    }
+    80% {
+      transform: translateY(calc(100vh - 80px)) rotate(720deg);
+    }
+    100% {
+      transform: translateY(calc(100vh - 80px)) rotate(720deg);
+    }
+  }
+
+  /* Shake effect on the page */
+  @keyframes shake {
+    0% { transform: translateX(0); }
+    20% { transform: translateX(-10px); }
+    40% { transform: translateX(10px); }
+    60% { transform: translateX(-10px); }
+    80% { transform: translateX(10px); }
+    100% { transform: translateX(0); }
+  }
+
+  .shake {
+    animation: shake 0.6s;
+  }
+
+  /* Bottom container for stacked icons */
+  #icon-stack {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    padding-bottom: 10px;
+  }
+  
+
+</style>
+<body>
+  <div id="icon-stack"></div>
+
+<script>
+  const icons = [ 'fa-circle-play' ]; // FontAwesome icons
+  const iconStack = document.getElementById('icon-stack');
+  const body = document.body;
+
+  function createFallingIcon() {
+    const icon = document.createElement('i');
+    const randomIcon = icons[Math.floor(Math.random() * icons.length)];
+    icon.className = `fa-solid ${randomIcon} falling-icon`;
+    
+    // Wider horizontal spread
+    icon.style.left = Math.random() * (window.innerWidth - 80) + 'px'; 
+    // Bigger random size
+    icon.style.fontSize = 70 + Math.random() * 70 + 'px'; // 36-72px
+    
+    document.body.appendChild(icon);
+
+    // Shake effect when it lands
+    setTimeout(() => {
+      body.classList.add('shake');
+      setTimeout(() => body.classList.remove('shake'), 600);
+    }, 2500);
+
+    // Move icon to bottom stack after falling
+    setTimeout(() => {
+      iconStack.appendChild(icon);
+      icon.style.position = 'relative';
+      icon.style.left = 'auto';
+      icon.style.top = 'auto';
+      icon.style.transform = 'none';
+    }, 3000);
+  }
+
+  // Create multiple falling icons
+  for (let i = 0; i < 10; i++) {
+    setTimeout(createFallingIcon, i * 150); // staggered
+  }
+</script>
+
+<div class="logo"><img src="logo.png" alt=""></div>
+   <nav class="nav">
+    <input type="checkbox" id="nav-toggle">
+<label for="nav-toggle" class="hamburger">
+  <i class="fa-solid fa-bars"></i>
+</label>
+
+      <a href="HOME2.HTML">Home</a>
+      <a href="music.html">Music</a>
+      <a href="video.html">Videos</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <div class="search-box">
+  <i class="fas fa-magnifying-glass"></i>
+  <input type="text" placeholder="What do you want to play?" />
+</div>
+
+
+
+    </nav>
+   
+
+
+<div class="demoWrapper">
+  <div class="stage">
+
+    <!-- Disney Princess Music Videos -->
+ <div class="box">
+  <video src="images/KHAYAAL.mp4" controls preload="none"></video>
+</div>
+
+
+<div class="box">
+  <video src="images/Arcane.mp4" controls preload="none"></video>
+</div>
+
+<div class="box">
+  <video src="images/How%20It's%20Done.mp4" controls preload="none"></video>
+</div>
+
+<div class="box">
+  <video src="images/Soda%20Pop.mp4" controls preload="none"></video>
+</div>
+
+<div class="box">
+  <video src="images/Your%20Idol.mp4" controls preload="none"></video>
+</div>
+
+<div class="box">
+  <video src="images/Pal%20Pal.mp4" controls preload="none"></video>
+</div>
+
+<div class="box">
+  <video src="images/Humsafar.mp4" controls preload="none"></video>
+</div>
+
+
+
+
+
+
+  </div>
+</div>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+const boxes = gsap.utils.toArray(".box");
+const radius = 420;
+const total = boxes.length;
+
+// INITIAL CIRCLE
+boxes.forEach((box, i) => {
+  const angle = (i / total) * Math.PI * 2;
+  gsap.set(box, {
+    x: Math.cos(angle) * radius,
+    z: Math.sin(angle) * radius,
+    rotationY: (i / total) * 360
+  });
+});
+
+// SCROLL TIMELINE
+const tl = gsap.timeline({
+  scrollTrigger: {
+    trigger: ".demoWrapper",
+    start: "top top",
+    end: "bottom top",
+    scrub: 1.1,
+    pin: ".stage",
+    anticipatePin: 1
+  }
+});
+
+// CIRCLE → LINE
+tl.to(boxes, {
+  x: i => (i - total / 2) * 300,
+  z: 0,
+  rotationY: 0,
+  ease: "power2.inOut",
+  duration: 2
+});
+
+// SLIDE LINE
+tl.to(boxes, {
+  x: "+=400",
+  duration: 1.5,
+  ease: "none"
+});
+
+// LINE → CIRCLE
+tl.to(boxes, {
+  x: i => Math.cos((i / total) * Math.PI * 2) * radius,
+  z: i => Math.sin((i / total) * Math.PI * 2) * radius,
+  rotationY: i => (i / total) * 360,
+  ease: "power2.inOut",
+  duration: 2
+});
+</script>
+
+<div class="videoh"><h1>Music is the invisible thread that <br> weaves emotions, memories, and <br>souls together across time and <br> space.</h1></div>
+<!-- Retro Old TV -->
+<div class="old-tv">
+  <div class="screen">
+  <video id="tv-player" width="100%" height="100%" preload="none">
+    <source src="images/Jhol.mp4" type="video/mp4">
+  </video>
+</div>
+
+  <button class="tv-btn">▶</button>
+  <div class="tv-leg left"></div>
+  <div class="tv-leg right"></div>
+</div>
+<script>
+const tvVideo = document.getElementById("tv-player");
+const tvBtn = document.querySelector(".tv-btn");
+
+tvBtn.addEventListener("click", () => {
+  if (tvVideo.paused) {
+    tvVideo.play();
+    tvBtn.textContent = "⏸";
+  } else {
+    tvVideo.pause();
+    tvBtn.textContent = "▶";
+  }
+});
+</script>
+
+
+
+
+     <!-- footer -->
+
+
+   
+    
+      <div class="title-wrap">
+         <div class="footer">
+      <a href="HOME2.HTML">၊၊||၊Home</a><br>
+      <a href="music.html">Music၊၊||၊</a><br>
+      <a href="video.html">၊၊||၊Videos</a><br>
+      <a href="about.html">About၊၊||၊</a><br>
+      <a href="contact.html">၊၊||၊Contact</a>
+    </div>
+        <div class="title">Soundly</div>
+        <div class="meta">
+          <span>(Listen-Songs 24/7)</span>
+        </div>
+      </div>
+    
+
+
+
+    </div>
+
+
+</body>
+</html>

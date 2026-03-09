@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soundly - Recently Played</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+  <link rel="icon" type="image/png" href="images/favicon.png">
+
+<style>
+     /* big title */
+    .title-wrap{
+      margin-top:130px;
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+    }
+
+    .title{
+      font-size: clamp(16vw, 20vw, 22vw);
+  padding-top: 10vh; 
+      font-weight:1000;
+      letter-spacing:-0.04em;
+      line-height:0.9;
+      color: #616161;
+     
+    }
+
+    .meta{
+      text-align:right;
+      font-size:12px;
+      color:#ffffff;
+    }
+
+    .meta span{
+      display:block;
+    }
+
+       .footer {
+        position: relative;
+        bottom: 0;
+        width: 100%;
+        background-color: none;
+        color: white;
+        text-align: center;
+        padding-top:11rem;
+      }
+
+      .footer a {
+        color: white;
+        text-decoration: none;
+        margin: 0 15px;
+      }
+
+      .footer a:hover {
+        text-decoration: underline;
+      }
+</style>
+<body>
+<div class="logo"><img src="logo.png" alt=""></div>
+   <nav class="nav">
+    <input type="checkbox" id="nav-toggle">
+<label for="nav-toggle" class="hamburger">
+  <i class="fa-solid fa-bars"></i>
+</label>
+
+      <a href="HOME2.HTML">Home</a>
+      <a href="music.html">Music</a>
+      <a href="video.html">Videos</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <div class="search-box">
+  <i class="fas fa-magnifying-glass"></i>
+  <input type="text" placeholder="What do you want to play?" />
+</div>
+
+
+
+    </nav>
+    <div class="container">
+        <header id="playlistHeader">
+  <div id="playlistHeaderContent">
+
+    <!-- Image Card -->
+    <div id="playlistCover">
+      <img id="playlistCoverImage" src="images/g9.png" alt="Playlist Cover">
+    </div>
+
+    <!-- Text Content -->
+    <div id="playlistInfo">
+      <span id="playlistType">Public Playlist</span>
+
+      <h1 id="playlistTitle">Recently Played</h1>
+
+      <p id="playlistDescription">
+        Sonder, Jhené Aiko and Miguel
+      </p>
+
+      <div id="playlistMeta">
+        <span id="playlistCreator">
+            <p></p>
+          Made for <strong>you</strong>
+        </span>
+        <span id="playlistDot1">•</span>
+        <span id="playlistSongs">50 songs</span>
+        <span id="playlistDot2">•</span>
+        <span id="playlistDuration">2 hr 43 min</span>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+        <div class="song-list">
+            <div class="song-item" data-src="https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3" data-title="Recommended Song 1" data-artist="Artist P" data-image="images/10.jfif">
+                <img src="images/g1.png" alt="Song Thumbnail" class="song-thumbnail">
+                <div class="song-info">
+                    <div class="song-title">Deewani Mastani</div>
+                    <div class="song-artist">Sanjay Leela Bhansali;Shreya</div>
+                </div>
+                <div class="song-duration">3:45</div>
+                <button class="play-btn"><i class="fas fa-play"></i></button>
+            </div>
+            <div class="song-item" data-src="https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3" data-title="Recommended Song 2" data-artist="Artist Q" data-image="images/11.jfif">
+                <img src="images/g2.png" alt="Song Thumbnail" class="song-thumbnail">
+                <div class="song-info">
+                    <div class="song-title">Revenge</div>
+                    <div class="song-artist">XXXTENTACION</div>
+                </div>
+                <div class="song-duration">4:12</div>
+                <button class="play-btn"><i class="fas fa-play"></i></button>
+            </div>
+            <div class="song-item" data-src="https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3" data-title="Recommended Song 3" data-artist="Artist R" data-image="images/12.jfif">
+                <img src="images/g3.png" alt="Song Thumbnail" class="song-thumbnail">
+                <div class="song-info">
+                    <div class="song-title">Chand Sifarish</div>
+                    <div class="song-artist">Jatin-Lalit;Shaan;Kailash Kher;Prasoon Joshi</div>
+                </div>
+                <div class="song-duration">2:58</div>
+                <button class="play-btn"><i class="fas fa-play"></i></button>
+            </div>
+            <div class="song-item" data-src="https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3" data-title="Recommended Song 4" data-artist="Artist S" data-image="images/13.jfif">
+                <img src="images/g4.png" alt="Song Thumbnail" class="song-thumbnail">
+                <div class="song-info">
+                    <div class="song-title">Da Da Dasse</div>
+                    <div class="song-artist">Amit Trivedi;Shellee;Babu Haabi;Kanika Kapoor</div>
+                </div>
+                <div class="song-duration">3:22</div>
+                <button class="play-btn"><i class="fas fa-play"></i></button>
+            </div>
+            <div class="song-item" data-src="https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3" data-title="Recommended Song 5" data-artist="Artist T" data-image="images/14.jfif">
+                <img src="images/g5.png" alt="Song Thumbnail" class="song-thumbnail">
+                <div class="song-info">
+                    <div class="song-title">Malang - Extended Version</div>
+                    <div class="song-artist">Pritam;Siddharth Mahadevan;Shilpa Rao;Sameer Anjaan</div>
+                </div>
+                <div class="song-duration">4:05</div>
+                <button class="play-btn"><i class="fas fa-play"></i></button>
+            </div>
+            <div class="song-item" data-src="https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3" data-title="Recommended Song 2" data-artist="Artist Q" data-image="images/11.jfif">
+                <img src="images/g2.png" alt="Song Thumbnail" class="song-thumbnail">
+                <div class="song-info">
+                    <div class="song-title">Moonlight</div>
+                    <div class="song-artist">KHAOS;Jmilton;Mc Jajá</div>
+                </div>
+                <div class="song-duration">4:12</div>
+                <button class="play-btn"><i class="fas fa-play"></i></button>
+            </div>
+            <div class="song-item" data-src="https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3" data-title="Recommended Song 3" data-artist="Artist R" data-image="images/12.jfif">
+                <img src="images/g3.png" alt="Song Thumbnail" class="song-thumbnail">
+                <div class="song-info">
+                    <div class="song-title">Dil To Bachcha Hai</div>
+                    <div class="song-artist">Rahat Fateh Ali Khan</div>
+                </div>
+                <div class="song-duration">2:58</div>
+                <button class="play-btn"><i class="fas fa-play"></i></button>
+            </div>
+            <div class="song-item" data-src="https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3" data-title="Recommended Song 4" data-artist="Artist S" data-image="images/13.jfif">
+                <img src="images/g4.png" alt="Song Thumbnail" class="song-thumbnail">
+                <div class="song-info">
+                    <div class="song-title">Tipo Nino Vs Kabrinha - Mega Slowed</div>
+                    <div class="song-artist">DJ Dozabri;DJ Biel Divulga;Mc Lekão</div>
+                </div>
+                <div class="song-duration">3:22</div>
+                <button class="play-btn"><i class="fas fa-play"></i></button>
+            </div>
+            <div class="song-item" data-src="https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3" data-title="Recommended Song 5" data-artist="Artist T" data-image="images/14.jfif">
+                <img src="images/g5.png" alt="Song Thumbnail" class="song-thumbnail">
+                <div class="song-info">
+                    <div class="song-title">Mann Mera - Original Version</div>
+                    <div class="song-artist">Gajendra Verma</div>
+                </div>
+                <div class="song-duration">4:05</div>
+                <button class="play-btn"><i class="fas fa-play"></i></button>
+            </div>
+            <div class="song-item" data-src="https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3" data-title="Recommended Song 2" data-artist="Artist Q" data-image="images/11.jfif">
+                <img src="images/g2.png" alt="Song Thumbnail" class="song-thumbnail">
+                <div class="song-info">
+                    <div class="song-title">Your Idol</div>
+                    <div class="song-artist">KPop Demon Hunters (Soundtrack from the Netflix Film)</div>
+                </div>
+                <div class="song-duration">4:12</div>
+                <button class="play-btn"><i class="fas fa-play"></i></button>
+            </div>
+            <div class="song-item" data-src="https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3" data-title="Recommended Song 3" data-artist="Artist R" data-image="images/12.jfif">
+                <img src="images/g3.png" alt="Song Thumbnail" class="song-thumbnail">
+                <div class="song-info">
+                    <div class="song-title">Lie</div>
+                    <div class="song-artist">Wings Jimin</div>
+                </div>
+                <div class="song-duration">2:58</div>
+                <button class="play-btn"><i class="fas fa-play"></i></button>
+            </div>
+            <div class="song-item" data-src="https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3" data-title="Recommended Song 4" data-artist="Artist S" data-image="images/13.jfif">
+                <img src="images/g4.png" alt="Song Thumbnail" class="song-thumbnail">
+                <div class="song-info">
+                    <div class="song-title">Softcore</div>
+                    <div class="song-artist">The Neighbourhood</div>
+                </div>
+                <div class="song-duration">3:22</div>
+                <button class="play-btn"><i class="fas fa-play"></i></button>
+            </div>
+            <div class="song-item" data-src="https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3" data-title="Recommended Song 5" data-artist="Artist T" data-image="images/14.jfif">
+                <img src="images/g5.png" alt="Song Thumbnail" class="song-thumbnail">
+                <div class="song-info">
+                    <div class="song-title">BLUE</div>
+                    <div class="song-artist">Billie Eilish</div>
+                </div>
+                <div class="song-duration">4:05</div>
+                <button class="play-btn"><i class="fas fa-play"></i></button>
+            </div>
+        </div>
+    </div>
+    <div class="now-playing" id="now-playing" style="display: none;">
+        <img id="np-thumbnail" src="" alt="Now Playing" class="now-playing-thumbnail">
+        <div class="now-playing-info">
+            <div id="np-title" class="now-playing-title"></div>
+            <div id="np-artist" class="now-playing-artist"></div>
+        </div>
+        <div class="controls">
+            <button id="prev-btn" class="control-btn"><i class="fas fa-step-backward"></i></button>
+            <button id="play-pause-btn" class="control-btn"><i class="fas fa-play"></i></button>
+            <button id="next-btn" class="control-btn"><i class="fas fa-step-forward"></i></button>
+        </div>
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-bar">
+                <div class="progress" id="progress"></div>
+            </div>
+        </div>
+        <div id="current-time" class="time">0:00</div>
+        <div id="duration" class="time">0:00</div>
+    </div>
+    <audio id="audio-player" preload="none"></audio>
+
+     <!-- footer -->
+
+
+   
+    
+      <div class="title-wrap">
+         <div class="footer">
+      <a href="HOME2.HTML">၊၊||၊Home</a><br>
+      <a href="music.html">Music၊၊||၊</a><br>
+      <a href="video.html">၊၊||၊Videos</a><br>
+      <a href="about.html">About၊၊||၊</a><br>
+      <a href="contact.html">၊၊||၊Contact</a>
+    </div>
+        <div class="title">Soundly</div>
+        <div class="meta">
+          <span>(Listen-Songs 24/7)</span>
+        </div>
+      </div>
+    
+
+
+
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

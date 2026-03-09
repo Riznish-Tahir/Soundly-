@@ -1,0 +1,503 @@
+/* Spotify-inspired styles */
+:root {
+    --bg-color: #292929;;
+    --secondary-color:#616161;
+    --text-color: #c7c7c7;
+    --accent-color: #292929;
+    --hover-color: #282828;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    flex: 1;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 120px auto 0;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    color: var(--text-color);
+
+}
+
+
+
+
+
+.song-list {
+    display: grid;
+    gap: 10px;
+}
+
+.song-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background: var(--secondary-color);
+    border-radius: 8px;
+    transition: background 0.3s;
+    cursor: pointer;
+}
+
+.song-item:hover {
+    background: var(--hover-color);
+}
+
+.song-thumbnail {
+    width: 50px;
+    height: 50px;
+    border-radius: 4px;
+    margin-right: 15px;
+    object-fit: cover;
+}
+
+.song-info {
+    flex: 1;
+}
+
+.song-title {
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.song-artist {
+    font-size: 0.9rem;
+    color: #b3b3b3;
+}
+
+.song-duration {
+    font-size: 0.9rem;
+    color: #b3b3b3;
+    margin-right: 15px;
+}
+
+.play-btn {
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.play-btn:hover {
+    background: #ffffff;
+    color: #616161;
+}
+
+.play-btn.playing {
+    background: #ffffff;
+}
+
+.now-playing {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--secondary-color);
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.3);
+}
+
+.video-player-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.tv-frame {
+    position: relative;
+    width: 80%;
+    max-width: 800px;
+    background: #000;
+    border: 20px solid #333;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    overflow: hidden;
+    filter: contrast(1.1) brightness(0.9);
+}
+
+.tv-frame video {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: sepia(0.1) hue-rotate(5deg);
+}
+
+.scan-lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(transparent 50%, rgba(255,255,255,0.03) 50%);
+    background-size: 100% 4px;
+    animation: scan 0.1s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes scan {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+}
+
+.flicker {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255,255,255,0.01);
+    animation: flicker 0.15s infinite;
+    pointer-events: none;
+}
+
+@keyframes flicker {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 0.1; }
+}
+
+.now-playing-thumbnail {
+    width: 50px;
+    height: 50px;
+    border-radius: 4px;
+    margin-right: 15px;
+    object-fit: cover;
+}
+
+.now-playing-info {
+    flex: 1;
+}
+
+.now-playing-title {
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.now-playing-artist {
+    font-size: 0.9rem;
+    color: #b3b3b3;
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.control-btn {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.progress-container {
+    flex: 1;
+    margin: 0 15px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 4px;
+    background: #535353;
+    border-radius: 2px;
+    cursor: pointer;
+    position: relative;
+}
+
+.progress {
+    height: 100%;
+    background: var(--accent-color);
+    border-radius: 2px;
+    width: 0%;
+}
+
+.time {
+    font-size: 0.8rem;
+    color: #b3b3b3;
+    min-width: 40px;
+}
+
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .song-item {
+        padding: 8px;
+    }
+
+    .song-thumbnail {
+        width: 40px;
+        height: 40px;
+    }
+
+    .now-playing {
+        padding: 8px 15px;
+    }
+
+    .now-playing-thumbnail {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* ===============================
+   NAVBAR ROOT
+================================ */
+.nav {
+  position: absolute;
+  top: 50px;
+  left: 52%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  font-size: 14px;
+  z-index: 9999;
+  width: max-content;
+  background: transparent;
+}
+
+/* ===============================
+   NAV LINKS
+================================ */
+.nav a {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 401;
+}
+
+.nav a:hover {
+  color: #c7c7c7;
+}
+
+/* ===============================
+   LOGO
+================================ */
+.logo {
+  position: absolute;
+  top: 1%;
+  left: 1%;
+  height: 100px;
+  display: flex;
+}
+
+/* ===============================
+   SEARCH BOX
+================================ */
+.search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-box input {
+  width: 300px;
+  padding: 10px 14px 10px 2.5rem;
+  border-radius: 999px;
+  border: none;
+  outline: none;
+  background: #1f1f1f;
+  color: #ffffff;
+  font-size: 15px;
+}
+
+.search-box input::placeholder {
+  color: #b3b3b3;
+}
+
+.search-box input:focus {
+  background: #2a2a2a;
+  box-shadow: 0 0 0 2px #ffffff;
+}
+
+.search-box .fa-magnifying-glass {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #ffffff;
+  pointer-events: none;
+}
+
+/* ===============================
+   HAMBURGER + TOGGLE
+================================ */
+#nav-toggle {
+  display: none;
+}
+
+.hamburger {
+  display: none;
+  font-size: 1.4rem;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+/* ===============================
+   MOBILE NAVBAR
+================================ */
+@media (max-width: 768px) {
+
+  .hamburger {
+    display: block;
+  }
+
+  .nav {
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+    background: #292929;
+    padding: 12px 0;
+  }
+
+  /* hide items by default */
+  .nav a,
+  .search-box {
+    display: none;
+  }
+
+  /* show when menu toggled */
+  #nav-toggle:checked ~ a,
+  #nav-toggle:checked ~ .search-box {
+    display: block;
+  }
+
+  .search-box {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .search-box input {
+    width: 90%;
+    max-width: 320px;
+  }
+}
+
+/* ===============================
+   SMALL PHONES
+================================ */
+@media (max-width: 600px) {
+  .nav {
+    top: 40px;
+  }
+}
+
+#playlistHeader {
+  position: relative;
+  padding: 80px 40px 40px;
+  background: linear-gradient(
+    180deg,
+    #292929 0%,
+    #c7c7c7 55%,
+    #0b0b0b 100%
+  );
+}
+
+#playlistHeaderContent {
+  display: flex;
+  align-items: flex-end;
+  gap: 28px;
+  max-width: 1200px;
+}
+
+#playlistCover {
+  width: 230px;
+  height: 230px;
+  flex-shrink: 0;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+
+#playlistCoverImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#playlistInfo {
+  color: #ffffff;
+}
+
+#playlistType {
+  font-size: 14px;
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+#playlistTitle {
+  font-size: clamp(48px, 6vw, 96px);
+  font-weight: 5500;
+  line-height: 1;
+padding-right: 7rem;  
+color: #ffffff;
+}
+
+#playlistDescription {
+  font-size: 16px;
+  color: #e0e0e0;
+  margin-bottom: 12px;
+  margin-left:-1rem;  
+
+}
+
+#playlistMeta {
+  font-size: 14px;
+  color: #c7c7c7;
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-left:-1rem;  
+
+}
+ .footer {
+        position: relative;
+        bottom: 0;
+        width: 100%;
+        background-color: none;
+        color: white;
+        text-align: center;
+        padding-top:11rem;
+      }
+
+      .footer a {
+        color: white;
+        text-decoration: none;
+        margin: 0 15px;
+      }
+
+      .footer a:hover {
+        text-decoration: underline;
+      }
